@@ -20,6 +20,7 @@ builder.Services.AddAuthorizationBuilder()
     .AddPolicy(PolicyNames.Admins, policy => policy.RequireRole(RoleNames.Admin));
 
 builder.Services.AddDataSeeder();
+builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -28,6 +29,7 @@ var application = builder.Build();
 application.UseHttpsRedirection();
 application.UseAuthentication();
 application.UseAuthorization();
+application.MapHealthChecks("/health");
 
 if (application.Environment.IsDevelopment())
 {
