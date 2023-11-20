@@ -1,4 +1,5 @@
 using Classforce.Server;
+using Classforce.Server.Constants;
 using Classforce.Server.Entities;
 using Classforce.Server.Extensions;
 using Classforce.Server.Services;
@@ -9,18 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlite(connectionString));
-
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddJwtBearerAuthentication(builder.Configuration);
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(PolicyNames.Users, policy => policy.RequireRole(RoleNames.User))
+    .AddPolicy(PolicyNames.Admins, policy => policy.RequireRole(RoleNames.Admin));
+
 builder.Services.AddDataSeeder();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var application = builder.Build();
-
 application.UseHttpsRedirection();
 
 if (application.Environment.IsDevelopment())
