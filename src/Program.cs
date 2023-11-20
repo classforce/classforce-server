@@ -1,6 +1,7 @@
 using Classforce.Server;
 using Classforce.Server.Entities;
 using Classforce.Server.Extensions;
+using Classforce.Server.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,5 +27,8 @@ if (application.Environment.IsDevelopment())
     _ = application.UseSwagger();
     _ = application.UseSwaggerUI();
 }
+
+await using var dataSeederScope = application.Services.CreateAsyncScope();
+await dataSeederScope.ServiceProvider.GetRequiredService<DataSeeder>().SeedDataAsync();
 
 application.Run();
