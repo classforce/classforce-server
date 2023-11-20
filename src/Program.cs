@@ -1,5 +1,6 @@
 using Classforce.Server;
 using Classforce.Server.Entities;
+using Classforce.Server.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddDataSeeder();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
