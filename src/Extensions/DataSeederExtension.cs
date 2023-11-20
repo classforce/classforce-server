@@ -14,7 +14,7 @@ public static class DataSeederExtension
     /// <returns>
     /// The same service collection so that multiple calls can be chained.
     /// </returns>
-    public static IServiceCollection AddDataSeeder(this ServiceCollection services)
+    public static IServiceCollection AddDataSeeder(this IServiceCollection services)
     {
         return services.AddScoped<DataSeeder>();
     }
