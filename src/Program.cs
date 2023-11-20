@@ -24,7 +24,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var application = builder.Build();
+
 application.UseHttpsRedirection();
+application.UseAuthentication();
+application.UseAuthorization();
 
 if (application.Environment.IsDevelopment())
 {
