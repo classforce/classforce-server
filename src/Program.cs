@@ -14,6 +14,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddJwtBearerAuthentication(builder.Configuration);
 builder.Services.AddDataSeeder();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
