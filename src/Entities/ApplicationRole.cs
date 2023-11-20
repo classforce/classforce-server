@@ -11,6 +11,11 @@ namespace Classforce.Server.Entities;
 public sealed class ApplicationRole : IdentityRole<Guid>
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="ApplicationRole"/> class.
+    /// </summary>
+    public ApplicationRole() { }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationRole"/> class with the specified <paramref name="name"/>.
     /// </summary>
     /// <param name="name">The name of the role.</param>

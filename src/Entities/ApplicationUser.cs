@@ -11,6 +11,11 @@ namespace Classforce.Server.Entities;
 public sealed class ApplicationUser : IdentityUser<Guid>
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="ApplicationUser"/> class.
+    /// </summary>
+    public ApplicationUser() { }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationUser"/> class with the specified <paramref name="email"/> address.
     /// </summary>
     /// <param name="email">The email address of the user.</param>
