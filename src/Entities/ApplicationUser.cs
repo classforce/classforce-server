@@ -14,7 +14,8 @@ public sealed class ApplicationUser : IdentityUser<Guid>
     /// Initializes a new instance of the <see cref="ApplicationUser"/> class with the specified <paramref name="email"/> address.
     /// </summary>
     /// <param name="email">The email address of the user.</param>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="email"/> is <see langword="null"/> or whitespace.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="email"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="email"/> consists only of white-space characters.</exception>
     public ApplicationUser(string email) : base(email)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(email, nameof(email));
