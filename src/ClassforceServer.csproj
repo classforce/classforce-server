@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>Classforce.Server</RootNamespace>
+    <UserSecretsId>c9aeea39-9daa-4cb4-b3ec-9e604b66d076</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
