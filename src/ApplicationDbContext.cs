@@ -28,4 +28,12 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser, Ap
     /// Gets or sets the <see cref="DbSet{TEntity}"/> of email verifications.
     /// </summary>
     public required DbSet<EmailVerification> EmailVerifications { get; init; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.SecuritySessions).WithOne(s => s.User).HasForeignKey(s => s.UserId);
+        _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.EmailVerifications).WithOne(e => e.User).HasForeignKey(e => e.UserId);
+    }
 }
