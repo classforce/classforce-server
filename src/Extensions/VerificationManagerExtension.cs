@@ -1,4 +1,4 @@
-﻿using Classforce.Server.Services;
+﻿using Classforce.Server.Services.Managers;
 
 namespace Classforce.Server.Extensions;
 

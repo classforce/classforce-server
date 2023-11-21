@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Classforce.Server.Services;
+namespace Classforce.Server.Services.Managers;
 
 /// <summary>
 /// Service responsible for performing email address verification process.
