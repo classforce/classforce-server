@@ -19,8 +19,9 @@ builder.Services.AddAuthorizationBuilder()
     .AddPolicy(PolicyNames.Users, policy => policy.RequireRole(RoleNames.User))
     .AddPolicy(PolicyNames.Admins, policy => policy.RequireRole(RoleNames.Admin));
 
-builder.Services.AddAmazonSES();
 builder.Services.AddDataSeeder();
+builder.Services.AddAmazonSES();
+builder.Services.AddVerificationManager();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
