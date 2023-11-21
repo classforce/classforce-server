@@ -19,7 +19,7 @@ public sealed class EmailVerification
     /// <summary>
     /// Initializes a new instance of the <see cref="EmailVerification"/> class for the specified user.
     /// </summary>
-    /// <param name="userId">The identifier of the user associated with this email verification.</param>
+    /// <param name="userId">The unique identifier of the user associated with this email verification.</param>
     [SetsRequiredMembers]
     public EmailVerification(Guid userId)
     {
@@ -27,7 +27,7 @@ public sealed class EmailVerification
     }
 
     /// <summary>
-    /// Gets or sets the unique identifier for this email verification.
+    /// Gets or sets the unique identifier of this email verification.
     /// </summary>
     public Guid Id { get; init; }
 
