@@ -18,4 +18,14 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser, Ap
     {
         ArgumentNullException.ThrowIfNull(options, nameof(options));
     }
+
+    /// <summary>
+    /// Gets or sets the <see cref="DbSet{TEntity}"/> of security sessions.
+    /// </summary>
+    public required DbSet<SecuritySession> SecuritySessions { get; init; }
+
+    /// <summary>
+    /// Gets or sets the <see cref="DbSet{TEntity}"/> of email verifications.
+    /// </summary>
+    public required DbSet<EmailVerification> EmailVerifications { get; init; }
 }
