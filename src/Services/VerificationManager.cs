@@ -23,7 +23,7 @@ public sealed class VerificationManager(ApplicationDbContext context, UserManage
     public async Task CreateVerificationAsync(Guid userId)
     {
         var user = await userManager.FindByIdAsync(userId.ToString()) ?? throw new InvalidOperationException($"User '{userId}' was not found.");
-        if (user.Email == null)
+        if (string.IsNullOrWhiteSpace(user.Email))
         {
             throw new InvalidOperationException($"User '{userId}' does not have an email address.");
         }
