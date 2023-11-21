@@ -31,4 +31,14 @@ public sealed class ApplicationUser : IdentityUser<Guid>
     /// Gets or sets the date and time when the user account was created.
     /// </summary>
     public DateTimeOffset CreationTime { get; init; } = DateTimeOffset.UtcNow;
+
+    /// <summary>
+    /// Gets the collection of security sessions associated with this user.
+    /// </summary>
+    public ICollection<SecuritySession> SecuritySessions { get; } = null!;
+
+    /// <summary>
+    /// Gets the collection of email verifications associated with this user.
+    /// </summary>
+    public ICollection<EmailVerification> EmailVerifications { get; } = null!;
 }
