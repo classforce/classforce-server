@@ -52,6 +52,38 @@ namespace Classforce.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmailVerifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    SecurityCode = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsCompleted = table.Column<bool>(type: "INTEGER", nullable: false),
+                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmailVerifications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SecuritySessions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    IpAddress = table.Column<string>(type: "TEXT", nullable: true),
+                    RefreshToken = table.Column<string>(type: "TEXT", nullable: false),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    CreationTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    LastSignInTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SecuritySessions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -212,6 +244,12 @@ namespace Classforce.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "EmailVerifications");
+
+            migrationBuilder.DropTable(
+                name: "SecuritySessions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
