@@ -21,7 +21,7 @@ builder.Services.AddAuthorizationBuilder()
 
 builder.Services.AddDataSeeder();
 builder.Services.AddAmazonSES();
-builder.Services.AddVerificationManager();
+builder.Services.AddManagers();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
