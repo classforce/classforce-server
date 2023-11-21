@@ -14,8 +14,10 @@ public static class DataSeederExtension
     /// <returns>
     /// The same service collection so that multiple calls can be chained.
     /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> are <see langword="null"/>.</exception>
     public static IServiceCollection AddDataSeeder(this IServiceCollection services)
     {
+        ArgumentNullException.ThrowIfNull(services, nameof(services));
         return services.AddScoped<DataSeeder>();
     }
 }

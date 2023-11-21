@@ -17,9 +17,13 @@ public static class AuthenticationExtension
     /// <returns>
     /// The same service collection so that multiple calls can be chained.
     /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> or <paramref name="configuration"/> is <see langword="null"/>.</exception>
     /// <exception cref="InvalidOperationException">Thrown when JWT Bearer authentication settings are not configured.</exception>
     public static IServiceCollection AddJwtBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
+        ArgumentNullException.ThrowIfNull(services, nameof(services));
+        ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
+
         _ = services.AddAuthentication(o =>
         {
             o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

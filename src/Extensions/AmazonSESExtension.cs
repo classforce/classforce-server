@@ -3,7 +3,7 @@
 namespace Classforce.Server.Extensions;
 
 /// <summary>
-/// A class containing an extension method to register the Amazon Simple Service.
+/// A class containing an extension method to register the <see cref="AmazonSES"/> service.
 /// </summary>
 public static class AmazonSESExtension
 {
@@ -14,7 +14,7 @@ public static class AmazonSESExtension
     /// <returns>
     /// The same service collection so that multiple calls can be chained.
     /// </returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> are null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="services"/> are <see langword="null"/>.</exception>
     public static IServiceCollection AddAmazonSES(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services, nameof(services));
