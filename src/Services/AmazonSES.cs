@@ -12,8 +12,18 @@ namespace Classforce.Server.Services;
 public sealed class AmazonSES(IConfiguration configuration) : IEmailService
 {
     /// <inheritdoc/>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="recipient"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="recipient"/> consists only of white-space characters.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="code"/> is less than 0 or greater than 999999.</exception>
     public async Task SendVerificationCodeAsync(string recipient, int code)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(recipient, nameof(recipient));
+
+        if (code is < 0 or > 999999)
+        {
+            throw new ArgumentOutOfRangeException(nameof(code), "Verification code must be between 0 and 999999.");
+        }
+
         var (awsAccessKeyId, awsSecretAccessKey) = GetAWSCredentials();
 
         using var client = new AmazonSimpleEmailServiceV2Client(awsAccessKeyId, awsSecretAccessKey, RegionEndpoint.USEast1);
