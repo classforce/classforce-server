@@ -36,7 +36,7 @@ public sealed class AmazonSES(IConfiguration configuration) : IEmailService
                 Simple = new Message
                 {
                     Subject = new Content { Data = "Classforce Verification Code" },
-                    Body = new Body { Text = new Content { Data = $"Your verification code is: {code}" } }
+                    Body = new Body { Text = new Content { Data = $"Your verification code is: {code:D6}" } }
                 }
             }
         };
