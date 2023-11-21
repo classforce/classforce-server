@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Security.Cryptography;
+using Classforce.Server.Utilities;
 
 namespace Classforce.Server.Entities;
 
@@ -44,7 +44,7 @@ public sealed class EmailVerification
     /// <summary>
     /// Gets or sets the secret code sent to the user inbox.
     /// </summary>
-    public int SecurityCode { get; init; } = RandomNumberGenerator.GetInt32(0, 1000000);
+    public int SecurityCode { get; init; } = SecretGenerator.CreateSecurityCode();
 
     /// <summary>
     /// Gets or sets a flag indicating whether this email verification has been completed.

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Security.Cryptography;
+using Classforce.Server.Utilities;
 
 namespace Classforce.Server.Entities;
 
@@ -46,7 +46,7 @@ public sealed class SecuritySession
     /// <summary>
     /// Gets or sets the persistent refresh token used to generate temporary access tokens.
     /// </summary>
-    public string RefreshToken { get; init; } = CreateRefreshToken();
+    public string RefreshToken { get; init; } = SecretGenerator.CreateRefreshToken();
 
     /// <summary>
     /// Gets or sets a flag indicating whether this security session can still be used to generate access tokens.
@@ -68,12 +68,4 @@ public sealed class SecuritySession
     /// Can be <see langword="null"/> if the session has never been used to create an access token.
     /// </remarks>
     public DateTimeOffset? LastSignInTime { get; set; }
-
-    private static string CreateRefreshToken()
-    {
-        var tokenBytes = RandomNumberGenerator.GetBytes(512);
-        var refreshToken = Convert.ToBase64String(tokenBytes);
-
-        return refreshToken;
-    }
 }
