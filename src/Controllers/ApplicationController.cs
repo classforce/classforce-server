@@ -6,6 +6,7 @@ namespace Classforce.Server.Controllers;
 /// <summary>
 /// The base class for all Classforce API controllers.
 /// </summary>
+[ProducesErrorResponseType(typeof(ApiError))]
 public class ApplicationController : ControllerBase
 {
     /// <summary>
