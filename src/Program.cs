@@ -32,6 +32,7 @@ var application = builder.Build();
 application.UseHttpsRedirection();
 application.UseAuthentication();
 application.UseAuthorization();
+application.MapControllers();
 application.MapHealthChecks("/health");
 
 if (application.Environment.IsDevelopment())
