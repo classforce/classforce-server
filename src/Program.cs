@@ -3,6 +3,7 @@ using Classforce.Server.Constants;
 using Classforce.Server.Entities;
 using Classforce.Server.Extensions;
 using Classforce.Server.Services;
+using Classforce.Server.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,7 @@ builder.Services.AddManagers();
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(SwaggerOptions.SetupJwtBearer);
 
 var application = builder.Build();
 
