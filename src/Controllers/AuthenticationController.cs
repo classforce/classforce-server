@@ -10,7 +10,7 @@ namespace Classforce.Server.Controllers;
 [Route("api/auth")]
 public sealed class AuthenticationController(
     UserManager<ApplicationUser> userManager,
-    VerificationManager verificationManager) : ControllerBase
+    VerificationManager verificationManager) : ApplicationController
 {
     [HttpPost("create-verification")]
     public async Task<IActionResult> SendCodeAsync(VerificationCreationRequest request)
