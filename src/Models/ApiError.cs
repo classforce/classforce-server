@@ -1,4 +1,6 @@
-﻿namespace Classforce.Server.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Models;
 
 /// <summary>
 /// Represents an error returned by an API controller.
@@ -16,6 +18,7 @@ public sealed record ApiError
     /// <param name="statusCode">The HTTP status code associated with the error.</param>
     /// <param name="title">The title of the error.</param>
     /// <param name="message">The human-readable description of the error.</param>
+    [SetsRequiredMembers]
     public ApiError(int statusCode, string title, string? message = null)
     {
         StatusCode = statusCode;
