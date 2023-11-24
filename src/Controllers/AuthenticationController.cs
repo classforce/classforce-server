@@ -1,4 +1,4 @@
-using Classforce.Server.Constants;
+﻿using Classforce.Server.Constants;
 using Classforce.Server.Entities;
 using Classforce.Server.Models;
 using Classforce.Server.Services.Managers;
@@ -11,7 +11,8 @@ namespace Classforce.Server.Controllers;
 [Route("api/auth")]
 public sealed class AuthenticationController(
     UserManager<ApplicationUser> userManager,
-    VerificationManager verificationManager) : ApplicationController
+    VerificationManager verificationManager,
+    SessionManager sessionManager) : ApplicationController
 {
     [HttpPost("send-code")]
     public async Task<IActionResult> SendCodeAsync(VerificationCreationRequest request)
@@ -38,5 +39,26 @@ public sealed class AuthenticationController(
 
         await verificationManager.CreateVerificationAsync(user.Id);
         return NoContent();
+    }
+
+    [HttpPost("create-session")]
+    public async Task<ActionResult<SessionCreationResult>> CreateSessionAsync(SessionCreationRequest request)
+    {
+        var user = await userManager.FindByEmailAsync(request.Email);
+        if (user == null)
+        {
+            return ApiError(CommonApiErrors.UnknownEmail);
+        }
+
+        var result = await verificationManager.CheckVerificationCodeAsync(user.Id, request.Code);
+        if (!result)
+        {
+            return ApiError(CommonApiErrors.InvalidVerificationCode);
+        }
+
+        var session = new SecuritySession(user.Id);
+        await sessionManager.CreateAsync(session);
+
+        return Ok(new SessionCreationResult(session.RefreshToken));
     }
 }
