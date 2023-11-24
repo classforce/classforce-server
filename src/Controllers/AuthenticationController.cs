@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Classforce.Server.Controllers;
 
+/// <summary>
+/// The controller responsible for user authentication, including email verification and session creation.
+/// </summary>
+/// <param name="userManager">The user manager service.</param>
+/// <param name="verificationManager">The verification manager service.</param>
+/// <param name="sessionManager">The session manager service.</param>
 [ApiController]
 [Route("api/auth")]
 public sealed class AuthenticationController(
@@ -15,6 +21,14 @@ public sealed class AuthenticationController(
     VerificationManager verificationManager,
     SessionManager sessionManager) : ApplicationController
 {
+    /// <summary>
+    /// Initiates an email verification process and sends the verification code to the user's inbox.
+    /// </summary>
+    /// <param name="request">The request to create a verification, containing the user's email address.</param>
+    /// <returns>
+    /// The <see cref="Task"/> that represents the asynchronous operation, containing the <see cref="IActionResult"/> of the request.
+    /// </returns>
+    /// <exception cref="InvalidOperationException">Thrown when an unexpected identity error occurrs.</exception>
     [HttpPost("send-code")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -44,6 +58,17 @@ public sealed class AuthenticationController(
         return NoContent();
     }
 
+    /// <summary>
+    /// Creates a session for the user with the specified email address provided that the verification code is valid.
+    /// </summary>
+    /// <param name="request">The request to create a session, containg the email address along with verification code that will be checked.</param>
+    /// <returns>
+    /// The <see cref="Task"/> that represents the asynchronous operation, containing the <see cref="ActionResult"/>,
+    /// which will be <see cref="SessionCreationResult"/> if the session was created successfully.
+    /// </returns>
+    /// <remarks>
+    /// The returned <see cref="SessionCreationResult"/> contains the refresh token that can be used to create access tokens.
+    /// </remarks>
     [HttpPost("create-session")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
