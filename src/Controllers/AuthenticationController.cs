@@ -15,6 +15,8 @@ public sealed class AuthenticationController(
     SessionManager sessionManager) : ApplicationController
 {
     [HttpPost("send-code")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> SendCodeAsync(VerificationCreationRequest request)
     {
         var user = await userManager.FindByEmailAsync(request.Email);
@@ -42,6 +44,8 @@ public sealed class AuthenticationController(
     }
 
     [HttpPost("create-session")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<SessionCreationResult>> CreateSessionAsync(SessionCreationRequest request)
     {
         var user = await userManager.FindByEmailAsync(request.Email);
