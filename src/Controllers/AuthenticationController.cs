@@ -1,4 +1,4 @@
-﻿using Classforce.Server.Constants;
+using Classforce.Server.Constants;
 using Classforce.Server.Entities;
 using Classforce.Server.Models;
 using Classforce.Server.Services.Managers;
@@ -13,7 +13,7 @@ public sealed class AuthenticationController(
     UserManager<ApplicationUser> userManager,
     VerificationManager verificationManager) : ApplicationController
 {
-    [HttpPost("create-verification")]
+    [HttpPost("send-code")]
     public async Task<IActionResult> SendCodeAsync(VerificationCreationRequest request)
     {
         var user = await userManager.FindByEmailAsync(request.Email);
