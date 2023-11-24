@@ -1,6 +1,7 @@
 ﻿using Classforce.Server.Constants;
 using Classforce.Server.Entities;
-using Classforce.Server.Models;
+using Classforce.Server.Models.Requests;
+using Classforce.Server.Models.Results;
 using Classforce.Server.Services.Managers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Classforce.Server.Models;
+namespace Classforce.Server.Models.Results;
 
 public sealed record SessionCreationResult
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Classforce.Server.Models;
+namespace Classforce.Server.Models.Requests;
 
 public sealed record SessionCreationRequest
 {
