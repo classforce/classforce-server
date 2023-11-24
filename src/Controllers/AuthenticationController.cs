@@ -29,10 +29,10 @@ public sealed class AuthenticationController(
     /// The <see cref="Task"/> that represents the asynchronous operation, containing the <see cref="IActionResult"/> of the request.
     /// </returns>
     /// <exception cref="InvalidOperationException">Thrown when an unexpected identity error occurrs.</exception>
-    [HttpPost("send-code")]
+    [HttpPost("create-verification")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> SendCodeAsync(VerificationCreationRequest request)
+    public async Task<IActionResult> CreateVerificationAsync(VerificationCreationRequest request)
     {
         var user = await userManager.FindByEmailAsync(request.Email);
         if (user == null)
