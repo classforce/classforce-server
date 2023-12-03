@@ -4,6 +4,10 @@ public sealed class Student
 {
     public Guid Id { get; init; }
 
+    public required Guid GroupId { get; init; }
+
+    public Group Group { get; } = null!;
+
     public required string FistNames { get; set; }
 
     public string? LastName { get; set; }

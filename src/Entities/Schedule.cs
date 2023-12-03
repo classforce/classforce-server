@@ -6,6 +6,10 @@ public sealed class Schedule
 {
     public Guid Id { get; init; }
 
+    public required Guid GroupId { get; init; }
+
+    public Group Group { get; } = null!;
+
     public string? Name { get; set; }
 
     public string? Description { get; set; }
@@ -27,4 +31,6 @@ public sealed class Schedule
     public DateTimeOffset LastEditTime { get; set; } = DateTimeOffset.UtcNow;
 
     public List<string> Tags { get; init; } = [];
+
+    public ICollection<Unschedule> Unschedules { get; } = null!;
 }

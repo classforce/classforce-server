@@ -41,4 +41,16 @@ public sealed class ApplicationUser : IdentityUser<Guid>
     /// Gets the collection of email verifications associated with this user.
     /// </summary>
     public ICollection<EmailVerification> EmailVerifications { get; } = null!;
+
+    public ICollection<OrganizationMembership> OrganizationMemberships { get; } = null!;
+
+    public ICollection<GroupMembership> GroupMemberships { get; } = null!;
+
+    public ICollection<DirectMessage> SentDirectMessages { get; } = null!;
+
+    public ICollection<DirectMessage> ReceivedDirectMessages { get; } = null!;
+
+    public ICollection<GroupMessage> SentGroupMessages { get; } = null!;
+
+    public ICollection<IssueMessage> SentIssueMessages { get; } = null!;
 }

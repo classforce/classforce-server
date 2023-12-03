@@ -13,4 +13,8 @@ public sealed class Organization
     public DateTimeOffset CreationTime { get; init; } = DateTimeOffset.UtcNow;
 
     public DateTimeOffset LastEditTime { get; set; } = DateTimeOffset.UtcNow;
+
+    public ICollection<OrganizationMembership> Memberships { get; } = null!;
+
+    public ICollection<Group> Groups { get; } = null!;
 }
