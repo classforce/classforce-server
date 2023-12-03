@@ -1,7 +1,19 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class Student
 {
+    public Student() { }
+
+    [SetsRequiredMembers]
+    public Student(Guid groupId, string firstNames, string? lastName = null)
+    {
+        GroupId = groupId;
+        FistNames = firstNames;
+        LastName = lastName;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid GroupId { get; init; }

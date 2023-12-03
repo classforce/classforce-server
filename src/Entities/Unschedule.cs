@@ -1,7 +1,19 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class Unschedule
 {
+    public Unschedule() { }
+
+    [SetsRequiredMembers]
+    public Unschedule(Guid scheduleId, DateTimeOffset startTime, DateTimeOffset endTime)
+    {
+        ScheduleId = scheduleId;
+        StartTime = startTime;
+        EndTime = endTime;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid ScheduleId { get; init; }

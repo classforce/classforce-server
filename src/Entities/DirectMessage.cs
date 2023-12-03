@@ -1,7 +1,21 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public class DirectMessage
 {
+    public DirectMessage() { }
+
+    [SetsRequiredMembers]
+    public DirectMessage(Guid authorId, Guid recipientId, string content)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(content, nameof(content));
+
+        AuthorId = authorId;
+        RecipientId = recipientId;
+        Content = content;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid AuthorId { get; init; }

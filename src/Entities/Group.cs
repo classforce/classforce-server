@@ -1,7 +1,20 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class Group
 {
+    public Group() { }
+
+    [SetsRequiredMembers]
+    public Group(Guid organizationId, string name)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+
+        OrganizationId = organizationId;
+        Name = name;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid OrganizationId { get; init; }

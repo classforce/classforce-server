@@ -1,3 +1,4 @@
+﻿using System.Diagnostics.CodeAnalysis;
 using Classforce.Server.Enums;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +7,14 @@ namespace Classforce.Server.Entities;
 [PrimaryKey(nameof(GroupId), nameof(UserId))]
 public sealed class GroupMembership
 {
-    public required Guid UserId { get; init; }
+    public GroupMembership() { }
 
-    public ApplicationUser User { get; } = null!;
+    [SetsRequiredMembers]
+    public GroupMembership(Guid groupId, Guid userId)
+    {
+        GroupId = groupId;
+        UserId = userId;
+    }
 
     public required Guid GroupId { get; init; }
 

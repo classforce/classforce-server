@@ -1,9 +1,23 @@
+﻿using System.Diagnostics.CodeAnalysis;
 using Classforce.Server.Enums;
 
 namespace Classforce.Server.Entities;
 
 public sealed class Schedule
 {
+    public Schedule() { }
+
+    [SetsRequiredMembers]
+    public Schedule(Guid groupId, string name, DateTimeOffset startTime, DateTimeOffset endTime)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+
+        GroupId = groupId;
+        Name = name;
+        StartTime = startTime;
+        EndTime = endTime;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid GroupId { get; init; }

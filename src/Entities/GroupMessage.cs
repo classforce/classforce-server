@@ -1,7 +1,21 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class GroupMessage
 {
+    public GroupMessage() { }
+
+    [SetsRequiredMembers]
+    public GroupMessage(Guid groupId, Guid authorId, string content)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(content, nameof(content));
+
+        GroupId = groupId;
+        AuthorId = authorId;
+        Content = content;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid GroupId { get; init; }

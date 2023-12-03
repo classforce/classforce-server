@@ -1,7 +1,20 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class Organization
 {
+    public Organization() { }
+
+    [SetsRequiredMembers]
+    public Organization(string name, string? description = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+
+        Name = name;
+        Description = description;
+    }
+
     public Guid Id { get; init; }
 
     public required string Name { get; set; }

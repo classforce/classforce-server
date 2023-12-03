@@ -1,7 +1,21 @@
-﻿namespace Classforce.Server.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Classforce.Server.Entities;
 
 public sealed class IssueMessage
 {
+    public IssueMessage() { }
+
+    [SetsRequiredMembers]
+    public IssueMessage(Guid issueId, Guid authorId, string content)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(content, nameof(content));
+
+        IssueId = issueId;
+        AuthorId = authorId;
+        Content = content;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid IssueId { get; init; }

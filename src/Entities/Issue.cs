@@ -1,9 +1,21 @@
-﻿using Classforce.Server.Enums;
+﻿using System.Diagnostics.CodeAnalysis;
+using Classforce.Server.Enums;
 
 namespace Classforce.Server.Entities;
 
 public sealed class Issue
 {
+    public Issue() { }
+
+    [SetsRequiredMembers]
+    public Issue(Guid groupId, Guid authorId, IssueType type, string? name = null)
+    {
+        GroupId = groupId;
+        AuthorId = authorId;
+        Type = type;
+        Name = name;
+    }
+
     public Guid Id { get; init; }
 
     public required Guid GroupId { get; init; }
