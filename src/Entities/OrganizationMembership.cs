@@ -1,9 +1,9 @@
-﻿using Classforce.Server.Enums;
+using Classforce.Server.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Classforce.Server.Entities;
 
-[PrimaryKey(nameof(UserId), nameof(OrganizationId))]
+[PrimaryKey(nameof(OrganizationId), nameof(UserId))]
 public sealed class OrganizationMembership
 {
     public required Guid UserId { get; init; }
@@ -13,6 +13,10 @@ public sealed class OrganizationMembership
     public required Guid OrganizationId { get; init; }
 
     public Organization Organization { get; } = null!;
+
+    public required Guid UserId { get; init; }
+
+    public ApplicationUser User { get; } = null!;
 
     public OrganizationRole Role { get; set; }
 
