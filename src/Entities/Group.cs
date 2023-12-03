@@ -6,7 +6,7 @@ public sealed class Group
 
     public required string Name { get; set; }
 
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 
     public bool IsDeleted { get; set; }
 
