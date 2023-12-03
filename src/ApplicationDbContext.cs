@@ -1,4 +1,4 @@
-﻿using Classforce.Server.Entities;
+using Classforce.Server.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +19,28 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
     /// Gets or sets the <see cref="DbSet{TEntity}"/> of email verifications.
     /// </summary>
     public required DbSet<EmailVerification> EmailVerifications { get; init; }
+
+    public required DbSet<Organization> Organizations { get; init; }
+
+    public required DbSet<OrganizationMembership> OrganizationMemberships { get; init; }
+
+    public required DbSet<Group> Groups { get; init; }
+
+    public required DbSet<GroupMembership> GroupMemberships { get; init; }
+
+    public required DbSet<Student> Students { get; init; }
+
+    public required DbSet<Schedule> Schedules { get; init; }
+
+    public required DbSet<Unschedule> Unschedules { get; init; }
+
+    public required DbSet<Issue> Issues { get; init; }
+
+    public required DbSet<GroupMessage> GroupMessages { get; init; }
+
+    public required DbSet<IssueMessage> IssueMessages { get; init; }
+
+    public required DbSet<DirectMessage> DirectMessages { get; init; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
