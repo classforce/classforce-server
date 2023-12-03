@@ -25,4 +25,6 @@ public sealed class Schedule
     public DateTimeOffset CreationTime { get; init; } = DateTimeOffset.UtcNow;
 
     public DateTimeOffset LastEditTime { get; set; } = DateTimeOffset.UtcNow;
+
+    public List<string> Tags { get; init; } = [];
 }
