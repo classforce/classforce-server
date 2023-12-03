@@ -1,4 +1,4 @@
-﻿using Classforce.Server.Enums;
+using Classforce.Server.Enums;
 
 namespace Classforce.Server.Entities;
 
@@ -10,7 +10,7 @@ public sealed class Schedule
 
     public Group Group { get; } = null!;
 
-    public string? Name { get; set; }
+    public required string Name { get; set; }
 
     public string? Description { get; set; }
 
