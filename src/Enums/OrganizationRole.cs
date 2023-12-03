@@ -2,7 +2,7 @@
 
 public enum OrganizationRole
 {
-    Owner,
+    Member,
     Admin,
-    Member
+    Owner
 }
