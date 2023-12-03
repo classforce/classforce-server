@@ -50,6 +50,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.EmailVerifications).WithOne(e => e.User).HasForeignKey(e => e.UserId);
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.OrganizationMemberships).WithOne(m => m.User).HasForeignKey(m => m.UserId);
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.GroupMemberships).WithOne(m => m.User).HasForeignKey(m => m.UserId);
+        _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.CreatedIssues).WithOne(i => i.Author).HasForeignKey(i => i.AuthorId);
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.SentDirectMessages).WithOne(m => m.Author).HasForeignKey(m => m.AuthorId);
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.ReceivedDirectMessages).WithOne(m => m.Recipient).HasForeignKey(m => m.RecipientId);
         _ = modelBuilder.Entity<ApplicationUser>().HasMany(u => u.SentGroupMessages).WithOne(m => m.Author).HasForeignKey(m => m.AuthorId);
