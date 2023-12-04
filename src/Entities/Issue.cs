@@ -8,12 +8,14 @@ public sealed class Issue
     public Issue() { }
 
     [SetsRequiredMembers]
-    public Issue(Guid groupId, Guid authorId, IssueType type, string? name = null)
+    public Issue(Guid groupId, Guid authorId, string name, IssueType type)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
+
         GroupId = groupId;
         AuthorId = authorId;
-        Type = type;
         Name = name;
+        Type = type;
     }
 
     public Guid Id { get; init; }
@@ -26,7 +28,7 @@ public sealed class Issue
 
     public ApplicationUser Author { get; } = null!;
 
-    public string? Name { get; set; }
+    public required string Name { get; set; }
 
     public string? Description { get; set; }
 
