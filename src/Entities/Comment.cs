@@ -2,12 +2,12 @@
 
 namespace Classforce.Server.Entities;
 
-public sealed class IssueMessage
+public sealed class Comment
 {
-    public IssueMessage() { }
+    public Comment() { }
 
     [SetsRequiredMembers]
-    public IssueMessage(Guid issueId, Guid authorId, string content)
+    public Comment(Guid issueId, Guid authorId, string content)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(content, nameof(content));
 

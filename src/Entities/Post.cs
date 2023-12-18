@@ -44,5 +44,5 @@ public sealed class Post
 
     public List<string> Tags { get; init; } = [];
 
-    public ICollection<IssueMessage> Messages { get; } = null!;
+    public ICollection<Comment> Messages { get; } = null!;
 }

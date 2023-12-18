@@ -38,7 +38,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 
     public required DbSet<GroupMessage> GroupMessages { get; init; }
 
-    public required DbSet<IssueMessage> IssueMessages { get; init; }
+    public required DbSet<Comment> Comments { get; init; }
 
     public required DbSet<DirectMessage> DirectMessages { get; init; }
 

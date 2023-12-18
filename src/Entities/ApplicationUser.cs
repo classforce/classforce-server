@@ -54,5 +54,5 @@ public sealed class ApplicationUser : IdentityUser<Guid>
 
     public ICollection<GroupMessage> SentGroupMessages { get; } = null!;
 
-    public ICollection<IssueMessage> SentIssueMessages { get; } = null!;
+    public ICollection<Comment> SentIssueMessages { get; } = null!;
 }
