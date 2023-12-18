@@ -7,20 +7,20 @@ public sealed class Comment
     public Comment() { }
 
     [SetsRequiredMembers]
-    public Comment(Guid issueId, Guid authorId, string content)
+    public Comment(Guid postId, Guid authorId, string content)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(content, nameof(content));
 
-        IssueId = issueId;
+        PostId = postId;
         AuthorId = authorId;
         Content = content;
     }
 
     public Guid Id { get; init; }
 
-    public required Guid IssueId { get; init; }
+    public required Guid PostId { get; init; }
 
-    public Post Issue { get; } = null!;
+    public Post Post { get; } = null!;
 
     public required Guid AuthorId { get; init; }
 

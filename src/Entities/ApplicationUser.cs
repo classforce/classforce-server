@@ -46,7 +46,7 @@ public sealed class ApplicationUser : IdentityUser<Guid>
 
     public ICollection<GroupMembership> GroupMemberships { get; } = null!;
 
-    public ICollection<Post> CreatedIssues { get; } = null!;
+    public ICollection<Post> CreatedPosts { get; } = null!;
 
     public ICollection<DirectMessage> SentDirectMessages { get; } = null!;
 
@@ -54,5 +54,5 @@ public sealed class ApplicationUser : IdentityUser<Guid>
 
     public ICollection<GroupMessage> SentGroupMessages { get; } = null!;
 
-    public ICollection<Comment> SentIssueMessages { get; } = null!;
+    public ICollection<Comment> CreatedComments { get; } = null!;
 }

@@ -1,6 +1,6 @@
 ﻿namespace Classforce.Server.Enums;
 
-public enum IssueType
+public enum PostType
 {
     General,
     Announcement,

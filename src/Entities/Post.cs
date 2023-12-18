@@ -8,7 +8,7 @@ public sealed class Post
     public Post() { }
 
     [SetsRequiredMembers]
-    public Post(Guid groupId, Guid authorId, string name, IssueType type)
+    public Post(Guid groupId, Guid authorId, string name, PostType type)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
 
@@ -32,7 +32,7 @@ public sealed class Post
 
     public string? Description { get; set; }
 
-    public IssueType Type { get; set; }
+    public PostType Type { get; set; }
 
     public bool IsDeleted { get; set; }
 
