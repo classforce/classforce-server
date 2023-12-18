@@ -62,7 +62,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
         _ = modelBuilder.Entity<Group>().HasMany(g => g.Memberships).WithOne(m => m.Group).HasForeignKey(m => m.GroupId);
         _ = modelBuilder.Entity<Group>().HasMany(g => g.Students).WithOne(s => s.Group).HasForeignKey(s => s.GroupId);
         _ = modelBuilder.Entity<Group>().HasMany(g => g.Schedules).WithOne(s => s.Group).HasForeignKey(s => s.GroupId);
-        _ = modelBuilder.Entity<Group>().HasMany(g => g.Issues).WithOne(i => i.Group).HasForeignKey(i => i.GroupId);
+        _ = modelBuilder.Entity<Group>().HasMany(g => g.Posts).WithOne(i => i.Group).HasForeignKey(i => i.GroupId);
         _ = modelBuilder.Entity<Group>().HasMany(g => g.Messages).WithOne(m => m.Group).HasForeignKey(m => m.GroupId);
 
         _ = modelBuilder.Entity<Schedule>().HasMany(s => s.Unschedules).WithOne(u => u.Schedule).HasForeignKey(u => u.ScheduleId);

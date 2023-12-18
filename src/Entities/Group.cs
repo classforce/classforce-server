@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Classforce.Server.Entities;
 
@@ -39,7 +39,7 @@ public sealed class Group
 
     public ICollection<Schedule> Schedules { get; } = null!;
 
-    public ICollection<Post> Issues { get; } = null!;
+    public ICollection<Post> Posts { get; } = null!;
 
     public ICollection<GroupMessage> Messages { get; } = null!;
 }
