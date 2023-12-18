@@ -34,7 +34,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 
     public required DbSet<Unschedule> Unschedules { get; init; }
 
-    public required DbSet<Issue> Issues { get; init; }
+    public required DbSet<Post> Posts { get; init; }
 
     public required DbSet<GroupMessage> GroupMessages { get; init; }
 
@@ -66,6 +66,6 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
         _ = modelBuilder.Entity<Group>().HasMany(g => g.Messages).WithOne(m => m.Group).HasForeignKey(m => m.GroupId);
 
         _ = modelBuilder.Entity<Schedule>().HasMany(s => s.Unschedules).WithOne(u => u.Schedule).HasForeignKey(u => u.ScheduleId);
-        _ = modelBuilder.Entity<Issue>().HasMany(i => i.Messages).WithOne(m => m.Issue).HasForeignKey(m => m.IssueId);
+        _ = modelBuilder.Entity<Post>().HasMany(i => i.Messages).WithOne(m => m.Issue).HasForeignKey(m => m.IssueId);
     }
 }

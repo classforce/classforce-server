@@ -39,7 +39,7 @@ public sealed class Group
 
     public ICollection<Schedule> Schedules { get; } = null!;
 
-    public ICollection<Issue> Issues { get; } = null!;
+    public ICollection<Post> Issues { get; } = null!;
 
     public ICollection<GroupMessage> Messages { get; } = null!;
 }

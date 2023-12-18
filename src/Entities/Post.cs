@@ -3,12 +3,12 @@ using Classforce.Server.Enums;
 
 namespace Classforce.Server.Entities;
 
-public sealed class Issue
+public sealed class Post
 {
-    public Issue() { }
+    public Post() { }
 
     [SetsRequiredMembers]
-    public Issue(Guid groupId, Guid authorId, string name, IssueType type)
+    public Post(Guid groupId, Guid authorId, string name, IssueType type)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name, nameof(name));
 

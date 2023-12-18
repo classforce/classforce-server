@@ -20,7 +20,7 @@ public sealed class IssueMessage
 
     public required Guid IssueId { get; init; }
 
-    public Issue Issue { get; } = null!;
+    public Post Issue { get; } = null!;
 
     public required Guid AuthorId { get; init; }
 

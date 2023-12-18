@@ -46,7 +46,7 @@ public sealed class ApplicationUser : IdentityUser<Guid>
 
     public ICollection<GroupMembership> GroupMemberships { get; } = null!;
 
-    public ICollection<Issue> CreatedIssues { get; } = null!;
+    public ICollection<Post> CreatedIssues { get; } = null!;
 
     public ICollection<DirectMessage> SentDirectMessages { get; } = null!;
 
